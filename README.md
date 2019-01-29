@@ -25,3 +25,6 @@ You need to create config.json in the root dir.
     ]
 }
 ```
+
+## Limitations
+The tool currently does not support pagination, it will display only first 100 commits on single repository
