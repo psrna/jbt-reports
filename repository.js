@@ -50,10 +50,10 @@ class Repository {
 
     populate() {
 
-        var repo = this.name;
-        var sinceDate = this.sinceDate;
+        let repo = this.name;
+        let sinceDate = this.sinceDate;
 
-        var promise = fetch('https://api.github.com/graphql', {
+        let promise = fetch('https://api.github.com/graphql', {
             method: 'POST',
             body: JSON.stringify({
                 query,
@@ -65,7 +65,7 @@ class Repository {
         }).then(res => res.text())
             .then(body => {
                 JSON.parse(body).data.repository.ref.target.history.edges.forEach(commit => {
-                    this.getCommits().push(new Commit(commit.node.messageHeadline, commit.node.url, commit.node.committedDate));
+                    this.getCommits().push(new Commit(commit.node.messageHeadline, commit.node.commitUrl, commit.node.committedDate));
                 });
             })
             .catch(error => console.error(error))
@@ -75,9 +75,9 @@ class Repository {
 
 class Commit {
 
-    constructor(messageHeadline, url, committedDate) {
+    constructor(messageHeadline, commitUrl, committedDate) {
         this.messageHeadline = messageHeadline;
-        this.url = url;
+        this.commitUrl = commitUrl;
         this.committedDate = committedDate;
     }
 }

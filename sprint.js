@@ -9,12 +9,12 @@ class Sprint {
      */
     getCurrentSprint(){
         /** number of weeks between today and the first sprint date */
-        var weeksDiff = this.weeksBetween(new Date(), this.getFirstSprint().sprintStartDate);
+        let weeksDiff = this.weeksBetween(new Date(), this.getFirstSprint().sprintStartDate);
         /** Number of sprints between today and the first sprint (e.g. 136), every sprint has 3 weeks */ 
-        var sprintsDiff = Math.floor(weeksDiff / 3);  
+        let sprintsDiff = Math.floor(weeksDiff / 3);  
 
-        var currentSprintNumber = this.getFirstSprint().sprintNumber + sprintsDiff;
-        var currentSprintStartDate = this.add_weeks(this.getFirstSprint().sprintStartDate, (sprintsDiff * 3));
+        let currentSprintNumber = this.getFirstSprint().sprintNumber + sprintsDiff;
+        let currentSprintStartDate = this.add_weeks(this.getFirstSprint().sprintStartDate, (sprintsDiff * 3));
 
         return {
             sprintNumer : currentSprintNumber,
@@ -28,8 +28,8 @@ class Sprint {
      */
     getSprint(x){
 
-        var weeks = (x - this.getFirstSprint().sprintNumber) * 3; 
-        var sprintXStartDate = this.add_weeks(this.getFirstSprint().sprintStartDate, weeks);
+        let weeks = (x - this.getFirstSprint().sprintNumber) * 3; 
+        let sprintXStartDate = this.add_weeks(this.getFirstSprint().sprintStartDate, weeks);
 
         return {
             sprintNumer : x,

@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <title>Test</title>
+    <style>{{css}}</style>
+  </head>
+  <body>
+    {{#repos}}
+    <table class="table table-bordered">
+    <thead>
+        <br>
+        <h1 class="text-center">{{name}}</h1>
+        <br>
+        <tr>
+            <th class="text-left">Message</th>
+            <th>Committed Date</th>
+        <tr>
+    </thead>
+    <tbody>
+        {{#commits}}
+            <tr>
+	            <th class="text-left"><a href='{{commitUrl}}'>{{messageHeadline}}</a></th>
+                <th>{{committedDate}}</th>
+            </tr>
+        {{/commits}}
+    </tbody>
+    </table>
+    {{/repos}}
+  </body>
+</html>
