@@ -1,25 +1,24 @@
 <html>
   <head>
     <title>Test</title>
-    <style>{{css}}</style>
   </head>
   <body>
     {{#repos}}
-    <table class="table table-bordered">
+    <table align='center'>
     <thead>
         <br>
-        <h1 class="text-center">{{name}}</h1>
+        <h1 align='center'>{{name}}</h1>
         <br>
         <tr>
-            <th class="text-left">Message</th>
-            <th>Committed Date</th>
+            <th align='left'>Message</th>
+            <th align='left'>Committed Date</th>
         <tr>
     </thead>
     <tbody>
         {{#commits}}
             <tr>
-	            <th class="text-left"><a href='{{commitUrl}}'>{{messageHeadline}}</a></th>
-                <th>{{committedDate}}</th>
+	            <th align='left'><a href='{{commitUrl}}'>{{messageHeadline}}</a></th>
+                <th align='left'>{{committedDate}}</th>
             </tr>
         {{/commits}}
     </tbody>
