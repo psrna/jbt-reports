@@ -1,0 +1,27 @@
+{
+    "token" : "",
+    "repositories": [
+        "jbosstools-openshift",
+        "jbosstools-server",
+        "jbosstools-hibernate",
+        "jbosstools-central",
+        "jbosstools-build",
+        "jbosstools-discovery",
+        "jbosstools-jst",
+        "jbosstools-target-platforms",
+        "jbosstools-forge",
+        "jbosstools-maven-plugins",
+        "jbosstools-base",
+        "jbosstools-webservices",
+        "jbosstools-build-sites",
+        "jbosstools-vpe",
+        "jbosstools-livereload",
+        "jbosstools-javaee",
+        "jbosstools-xulrunner",
+        "jbosstools-browsersim",
+        "jbosstools-aerogear",
+        "jbosstools-freemarker",
+        "jbosstools-arquillian",
+        "jbosstools-central-webpage"
+    ]
+}

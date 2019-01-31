@@ -1,9 +1,6 @@
 'use strict'
 
-
 const fetch = require('node-fetch');
-const config = require('./config.json');
-
 const query = `
 query($repo: String!, $sinceDate: GitTimestamp!) {
     repository(owner: "jbosstools", name: $repo) {
@@ -49,7 +46,6 @@ class Repository {
     }
 
     populate() {
-
         let repo = this.name;
         let sinceDate = this.sinceDate;
 
@@ -60,7 +56,7 @@ class Repository {
                 variables: { repo, sinceDate }
             }),
             headers: {
-                'Authorization': `Bearer ${config.token}`,
+                'Authorization': `Bearer ${require('./app.js').token}`,
             },
         }).then(res => res.text())
             .then(body => {
@@ -68,7 +64,9 @@ class Repository {
                     this.getCommits().push(new Commit(commit.node.messageHeadline, commit.node.commitUrl, commit.node.committedDate));
                 });
             })
-            .catch(error => console.error(error))
+            .catch(err => {
+                throw new Error(err);
+            })
         return promise;
     }
 }
