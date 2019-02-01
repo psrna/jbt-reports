@@ -42,17 +42,22 @@ Promise.all(config.repositories.map(name => {
 }
 ))
 .then(data => {
-    let json = JSON.stringify(repos);
+    repos.sort(compare);
     Reporter.generateReport(repos);
-
-    // repos.forEach(element => {
-    //     console.log('\n  ~~~~ ' + element.name + ' ~~~~ \n');
-    //     element.getCommits().forEach(com => {
-    //         console.log(com.messageHeadline);
-    //     });
-    // });
 })
 .catch(err => {
     console.log(err);
 })
 
+function compare(repoA, repoB){
+    const commitsCountA = repoA.getCommitsCount();
+    const commitsCountB = repoB.getCommitsCount();
+
+    let comparison = 0;
+    if(commitsCountA > commitsCountB){
+        comparison = -1;
+    } else if(commitsCountA < commitsCountB){
+        comparison = 1;
+    }
+    return comparison;
+}

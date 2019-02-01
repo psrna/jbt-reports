@@ -76,8 +76,10 @@ class Commit {
     constructor(messageHeadline, commitUrl, committedDate) {
         this.messageHeadline = messageHeadline;
         this.commitUrl = commitUrl;
-        this.committedDate = committedDate;
+        this.committedDate = new Date(committedDate).toDateString();
     }
+
+    
 }
 
 module.exports = {
