@@ -7,9 +7,9 @@ const {Repository, Commit} = require('../repository.js');
 let template = fs.readFileSync('./ui/templates/report.mst');
 
 
-function generateReport(repos){
+function generateReport(repos, sinceSprint){
 
-    let output = Mustache.render(template.toString(), {repos});
+    let output = Mustache.render(template.toString(), Object.assign({}, {repos}, {sprint:sinceSprint}));
     fs.writeFile("./report.html", output, function(err) {
         if(err) {
             return console.log(err);

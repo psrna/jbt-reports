@@ -28,7 +28,7 @@ let commitsSinceDate = new Sprint().getCurrentSprint().sprintStartDate;
 
 if (argv.sprint > new Sprint().getFirstSprint().sprintNumber) {
     commitsSinceDate = new Sprint().getSprint(argv.sprint).sprintStartDate;
-}
+} 
 if (argv.token) {
     token = argv.token;
 }
@@ -43,7 +43,7 @@ Promise.all(config.repositories.map(name => {
 ))
 .then(data => {
     repos.sort(compare);
-    Reporter.generateReport(repos);
+    Reporter.generateReport(repos, argv.sprint == 0 ? new Sprint().getCurrentSprint().sprintNumer : argv.sprint);
 })
 .catch(err => {
     console.log(err);
