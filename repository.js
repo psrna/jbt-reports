@@ -58,7 +58,12 @@ class Repository {
             headers: {
                 'Authorization': `Bearer ${require('./app.js').token}`,
             },
-        }).then(res => res.text())
+        }).then(res => {
+            if (res.status == 401) {
+                throw new Error('Unauthorized. Check your github TOKEN.')
+            }
+            return res.text()
+        })
             .then(body => {
                 JSON.parse(body).data.repository.ref.target.history.edges.forEach(commit => {
                     this.getCommits().push(new Commit(commit.node.messageHeadline, commit.node.commitUrl, commit.node.committedDate));
@@ -79,7 +84,7 @@ class Commit {
         this.committedDate = new Date(committedDate).toDateString();
     }
 
-    
+
 }
 
 module.exports = {
